@@ -171,18 +171,20 @@ export default function Home() {
 
   return (
     <main className="relative h-screen w-full overflow-hidden bg-background">
-      <video
-        ref={shaderContainerRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster="/backgroundposter.png"
-        className={`fixed inset-0 z-0 h-full w-full object-cover transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}
-      >
-        <source src="/background.mp4" type="video/mp4" />
-      </video>
-      <div className="absolute inset-0 z-0 bg-black/50" />
+      <div className={`fixed inset-0 z-0 transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}>
+        <div style={{ padding: "56.25% 0 0 0", position: "relative", height: "100%", width: "100%" }}>
+          <iframe
+            src="https://player.vimeo.com/video/1140933123?autoplay=1&muted=1&loop=1&background=1"
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+            style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+            title="background"
+          />
+        </div>
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
+
 
       <SoundToggle videoRef={shaderContainerRef} />
 
@@ -207,8 +209,8 @@ export default function Home() {
               key={item}
               onClick={() => scrollToSection(index)}
               className={`group relative font-sans text-sm font-medium transition-colors ${currentSection === index
-                  ? "text-foreground"
-                  : "text-foreground/80 hover:text-foreground"
+                ? "text-foreground"
+                : "text-foreground/80 hover:text-foreground"
                 }`}
             >
               {item}
@@ -252,7 +254,7 @@ export default function Home() {
               <MagneticButton
                 size="lg"
                 variant="primary"
-                onClick={() => window.open("https://v0.app/templates/R3n0gnvYFbO", "_blank")}
+                onClick={() => window.open("#", "_blank")}
               >
                 Resume
               </MagneticButton>
